@@ -28,9 +28,9 @@ if (empty($_POST["name"])) {
 ?>
 <h1>Veranstaltung ändern</h1>
 <form action="veranstaltung_aendern.php" method="POST">
-<p>Name: <input type="text" name="name" maxlength="50" value="<?php echo htmlspecialchars($name) ?>"/></p>
-<p>Beschreibung: <textarea name="beschreibung" cols="30" rows="3"><?php echo htmlspecialchars($beschreibung) ?></textarea> </p>
-<p>Tag (dd.mm.yyyy): <input type="date" name="tag" value="<?php echo htmlspecialchars($zeit[0]) ?>" />Uhrzeit (HH:MM): <input type="time" name="zeit" value="<?php echo htmlspecialchars($zeit[1]) ?>" /></p>
+<p>Name: <input type="text" name="name" maxlength="50" value="<?php echo htmlspecialchars($name); ?>"/></p>
+<p>Beschreibung: <textarea name="beschreibung" cols="30" rows="3"><?php echo htmlspecialchars($beschreibung); ?></textarea> </p>
+<p>Tag (dd.mm.yyyy): <input type="date" name="tag" value="<?php echo htmlspecialchars($zeit[0]); ?>" />Uhrzeit (HH:MM): <input type="time" name="zeit" value="<?php echo htmlspecialchars($zeit[1]); ?>" /></p>
 Veranstaltungsort:<select name="ort" size="1">
 <?php
     $ergebnis = $mysqli->query("SELECT * FROM orte");
@@ -59,7 +59,6 @@ $mysqli->close();
     $zeit = $_POST["zeit"];
     $ort = $_POST["ort"];
     $id = $_POST["id"];
-    echo $id;
     $datetime = $tag . " " . $zeit . ":00";
     if ($stmt = $mysqli->prepare("UPDATE veranstaltungen set name=?, beschreibung=?, zeit=?, ort_id=? WHERE veranstaltungs_id=?")) {
         $stmt->bind_param("sssii", $name, $beschreibung, $datetime, $ort, $id);

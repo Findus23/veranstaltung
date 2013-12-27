@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>Meine Website</title>
+	<title>Veranstaltungen</title>
 	<meta name="author" content="Lukas" >
     <style>
     tr:nth-child(2n) td {
