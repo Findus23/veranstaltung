@@ -31,7 +31,7 @@ if (empty($_POST["name"])) {
 <p>PLZ: <input type="text" name="plz" maxlength="5" size="5" value="<?php echo $plz; ?>" /> Stadt: <input type="text" name="stadt" maxlength="50" value="<?php echo $stadt; ?>"/></p>
 <p>Straße: <input type="text" name="strasse" maxlength="50" size="5" value="<?php echo $strasse; ?>" /> Hausnummer: <input type="text" name="hausnummer" maxlength="5" size="3" value="<?php echo $hausnummer; ?>"/></p>
 <input type="hidden" name="id" value="<?php echo $id ?>" />
-<p><input type="submit" value="Ort hinzufügen"></p>
+<p><input type="submit" value="Ort ändern"></p>
 
 
 </form>
