@@ -47,7 +47,7 @@ if (!isset($_SESSION['user'])) {
 <?php
 } else {
 echo "Hallo " . $_SESSION['user'] . " - <a href='./login.php?abmelden=1'>Abmelden</a>";
-echo "<script>window.opener.parent.location.reload();window.close();</script>";
+echo "<a onclick='window.opener.parent.location.reload();window.close()'>Fenster schließen</a>";
 }
 if (isset($_GET["abmelden"])) {unset($_SESSION['user']);}
 ?>

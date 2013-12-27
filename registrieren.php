@@ -49,17 +49,16 @@ if (isset($_POST["benutzername"])) {    //Wenn das Formular ausgefüllt wurde ..
     $salt = "*|!JeFF28S,@Z3Sm5\1?";
     $salted_password = $salt . $passwort_1;
     $password_hash = hash('sha256', $salted_password);
-    echo "Zwischenstand";
     if ($stmt = $mysqli->prepare("INSERT INTO benutzer (username, passwort, vorname, nachname) VALUES (?, ?, ?, ?)")) {   // Der SQL-Befehl wird vorbereitet ...
         $stmt->bind_param("ssss", $benutzername, $password_hash, $vorname, $nachname);               // ... eingesetzt ...
         $stmt->execute();                                                               // ... und ausgeführt
         $stmt->close();
         $mysqli->close();
-        echo "Benutzer erfolgreich angelegt";
-        header("Location: http://localhost/mysql/veranstaltung/veranstaltungen.php");   // Auf die Hauptseite weiterleiten
+        echo "<p>Benutzer erfolgreich angelegt</p>";
+        echo "<p><input type='button' value='Fenster schließen' onclick='window.opener.parent.location.reload();window.close()'></p>";
+
     }
 }
-$mysqli->close();
 ?>
 
 </body>
