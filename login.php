@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (isset($_POST["benutzername"])) {
     require_once "verbindungsaufbau.php"; //mit Server verbinden
     $user= $_POST["benutzername"];
@@ -12,9 +13,7 @@ if (isset($_POST["benutzername"])) {
         $stmt->bind_result($password_db);
         $stmt->fetch();
         if($password_db == $password_hash) {
-           echo "Hallo $user";
-           $richtig="yes";
-           setcookie("angemeldet", $user);
+           $_SESSION['user'] = $user;
         } else {
           echo "falsches Passwort";
         }
@@ -24,7 +23,7 @@ if (isset($_POST["benutzername"])) {
     }
     $mysqli->close();
 }
-if (!isset($richtig) || $richtig != "yes") {
+if (!isset($_SESSION['user'])) {
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -46,8 +45,11 @@ if (!isset($richtig) || $richtig != "yes") {
 
 
 <?php
+} else {
+echo "Hallo " . $_SESSION['user'] . " - <a href='./login.php?abmelden=1'>Abmelden</a>";
+echo "<script>window.opener.parent.location.reload();window.close();</script>";
 }
-
+if (isset($_GET["abmelden"])) {unset($_SESSION['user']);}
 ?>
 
 

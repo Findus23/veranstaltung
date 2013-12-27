@@ -11,11 +11,15 @@
 }
 
     </style>
+    <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
 <?php
+require_once "angemeldet.php";
 require_once "verbindungsaufbau.php"; //mit Server verbinden
+
+
 
 $ergebnis = $mysqli->query("SELECT * FROM orte, veranstaltungen WHERE orte.ort_id = veranstaltungen.ort_id");  //SQL Befehl ausführen
 echo "<table border='1'>\n";
