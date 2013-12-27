@@ -16,7 +16,7 @@
 
 <body>
 <?php
-require_once "angemeldet.php";
+// require_once "angemeldet.php";
 require_once "verbindungsaufbau.php"; //mit Server verbinden
 
 
