@@ -39,5 +39,7 @@ $mysqli->close();
 ?>
 
 <a href="veranstaltung_erstellen.php">Veranstaltung erstellen</a>
+<br /><a href="orte.php">alle Orte anzeigen</a>
+
 </body>
 </html>

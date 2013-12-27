@@ -43,7 +43,7 @@ Veranstaltungsort:<select name="ort" size="1">
     }
 $mysqli->close();
 ?>
-</select> <a href="./orte_bearbeiten.php" target="Orte" >Orte bearbeiten</a>
+</select> <a href="./orte.php" target="Orte" >Orte anzeigen und bearbeiten</a>
 <input type="hidden" name="id" value="<?php echo $id ?>" />
 <p><input type="submit" value="Veranstaltung ändern"></p>
 

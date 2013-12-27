@@ -37,5 +37,6 @@ $mysqli->close();
 ?>
 
 <a href="ort_erstellen.php">neuen Ort hinzufügen</a>
+<br /><a href="veranstaltungen.php">zurück zu den Veranstaltungen</a>
 </body>
 </html>

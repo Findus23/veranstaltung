@@ -25,7 +25,7 @@ while ($zeile = $ergebnis->fetch_array()) {
     echo "<option value='" . htmlspecialchars($zeile['ort_id']) . "'>" . htmlspecialchars($zeile['ort_name']) . "</option>\n";           //Optionen in Dropdown-Liste eingeben
 }
 ?>
-</select> <a href="./orte_bearbeiten.php" target="Orte" >Orte bearbeiten</a>
+</select> <a href="./orte.php" target="Orte" >Orte anzeigen und bearbeiten</a>
 <p><input type="submit" value="Veranstaltung hinzufügen"></p>
 
 
