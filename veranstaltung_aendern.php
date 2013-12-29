@@ -5,6 +5,8 @@
 <head>
   <title>Veranstaltung ändern</title>
   <meta charset="utf-8" />
+  <link rel="stylesheet" href="./style.css" />
+
 
 </head>
 

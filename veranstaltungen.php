@@ -5,12 +5,6 @@
 	<meta charset="utf-8" />
 	<title>Veranstaltungen</title>
 	<meta name="author" content="Lukas" >
-    <style>
-    tr:nth-child(2n) td {
-        background: #EEE8AA;
-}
-
-    </style>
     <link rel="stylesheet" href="./style.css" />
 </head>
 
@@ -30,9 +24,9 @@ while ($zeile = $ergebnis->fetch_array()) {
         . "<td>" . date( 'd.m.Y H:i', strtotime(htmlspecialchars($zeile['zeit'])))
         . "<td>" . htmlspecialchars($zeile['ort_name']) . "</td>"
         . "<td>" . htmlspecialchars($zeile['plz']) . " " . htmlspecialchars($zeile['stadt']) . "<br /> " . htmlspecialchars($zeile['strasse']) . " " . htmlspecialchars($zeile['hausnummer']) . "</td>"
-        . "<td><a href='./teilnahme.php?id=" . htmlspecialchars($zeile['veranstaltungs_id']) . "'><b>teilnehmen</b></a></td>"
-        . "<td><a href='./veranstaltung_aendern.php?id=" . htmlspecialchars($zeile['veranstaltungs_id']) . "'>ändern</a></td>"
-        . "<td><a href='./veranstaltung_loeschen.php?id=" . htmlspecialchars($zeile['veranstaltungs_id']) . "'>löschen</a></td>"
+        . "<td><a class='tabelle' href='./teilnahme.php?id=" . htmlspecialchars($zeile['veranstaltungs_id']) . "'><b>teilnehmen</b></a></td>"
+        . "<td><a class='tabelle' href='./veranstaltung_aendern.php?id=" . htmlspecialchars($zeile['veranstaltungs_id']) . "'>ändern</a></td>"
+        . "<td><a class='tabelle' href='./veranstaltung_loeschen.php?id=" . htmlspecialchars($zeile['veranstaltungs_id']) . "'>löschen</a></td>"
         ."</td></tr>\n" ;
 }
 echo "</table>";

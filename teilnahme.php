@@ -5,6 +5,8 @@
 	<meta charset="utf-8" />
 	<title>Teilnahme</title>
 	<meta name="author" content="Lukas" >
+	<link rel="stylesheet" href="./style.css" />
+
 <script type="text/javascript">
 function FensterOeffnen (Adresse) {
   MeinFenster = window.open(Adresse, "Zweitfenster", "width=300,height=400,left=100,top=200");

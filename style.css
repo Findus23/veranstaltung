@@ -1,0 +1,6 @@
+tr:nth-child(2n) td {
+        background: #EEE8AA;
+}
+a.tabelle:visited {
+	color: blue;
+}
