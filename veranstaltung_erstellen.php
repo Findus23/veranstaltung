@@ -47,7 +47,7 @@ if (isset($_POST["name"]) && isset($_POST["beschreibung"]) && isset($_POST["tag"
         header("Location: http://localhost/mysql/veranstaltung/veranstaltungen.php");   // Auf die Hauptseite weiterleiten
     }
 }
-?>
+?> 
 
 </body>
 </html>
