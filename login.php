@@ -7,13 +7,16 @@ if (isset($_POST["benutzername"])) {
     $salt = "*|!JeFF28S,@Z3Sm5\1?";
     $salted_password = $salt . $passwort;
     $password_hash = hash('sha256', $salted_password);
-    if($stmt = $mysqli->prepare("SELECT passwort FROM benutzer WHERE username=?")) {
+    if($stmt = $mysqli->prepare("SELECT passwort,user_id,vorname,nachname FROM benutzer WHERE username=?")) {
         $stmt->bind_param("s", $user);
         $stmt->execute();
-        $stmt->bind_result($password_db);
+        $stmt->bind_result($password_db, $user_id, $vorname, $nachname);
         $stmt->fetch();
         if($password_db == $password_hash) {
            $_SESSION['user'] = $user;
+		   $_SESSION['user_id'] = $user_id;
+		   $_SESSION['vorname'] = $vorname;
+		   $_SESSION['nachname'] = $nachname;
         } else {
           echo "falsches Passwort";
         }
@@ -47,9 +50,9 @@ if (!isset($_SESSION['user'])) {
 <?php
 } else {
 echo "Hallo " . $_SESSION['user'] . " - <a href='./login.php?abmelden=1'>Abmelden</a>";
-echo "<a onclick='window.opener.parent.location.reload();window.close()'>Fenster schließen</a>";
+echo "<script>window.opener.parent.location.reload();window.close();</script>";
 }
-if (isset($_GET["abmelden"])) {unset($_SESSION['user']);}
+if (isset($_GET["abmelden"])) {session_destroy();}
 ?>
 
 
