@@ -30,11 +30,26 @@ if (empty($_POST["name"])) {
 ?>
 <h1>Veranstaltung ändern</h1>
 <form action="veranstaltung_aendern.php" method="POST">
-<p>Name: <input type="text" name="name" maxlength="50" value="<?php echo htmlspecialchars($name); ?>"/></p>
-<p>Beschreibung: <textarea name="beschreibung" cols="30" rows="3"><?php echo htmlspecialchars($beschreibung); ?></textarea> </p>
-<p>Tag (dd.mm.yyyy): <input type="date" name="tag" value="<?php echo htmlspecialchars($zeit[0]); ?>" />Uhrzeit (HH:MM): <input type="time" name="zeit" value="<?php echo htmlspecialchars($zeit[1]); ?>" /></p>
-Veranstaltungsort:<select name="ort" size="1">
-<?php
+<table>
+	<tr>
+		<td>Name: </td>
+		<td><input type="text" name="name" maxlength="50" required value="<?php echo htmlspecialchars($name); ?>" /></td>
+	</tr>
+	<tr>
+		<td>Beschreibung: </td>
+		<td><textarea name="beschreibung" cols="31" rows="5" ><?php echo htmlspecialchars($beschreibung); ?></textarea> </td>
+	</tr>
+	<tr>
+		<td>Tag:</td>
+		<td><input type="date" name="tag" placeholder="dd.mm.yyyy" value="<?php echo htmlspecialchars($zeit[0]); ?>" pattern="(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19|20)\d\d" title="dd.mm.yyyy" /></td>
+	</tr>
+	<tr>
+		<td>Uhrzeit</td>
+		<td><input type="time" name="zeit" placeholder="hh:mm" value="<?php echo htmlspecialchars($zeit[1]); ?>" pattern="^([01][0-9]|2[0-3]):([0-5][0-9])$" title="hh:mm" /></td>
+	</tr>
+	<tr>
+		<td>Veranstaltungsort:</td>
+		<td><select name="ort" size="1"><?php
     $ergebnis = $mysqli->query("SELECT * FROM orte");
     while ($zeile = $ergebnis->fetch_array()) {
        if ($zeile['ort_id'] == $ort) {
@@ -44,12 +59,11 @@ Veranstaltungsort:<select name="ort" size="1">
        }
     }
 $mysqli->close();
-?>
-</select> <a href="./orte.php" target="Orte" >Orte anzeigen und bearbeiten</a>
+?></select><a href="./orte.php" target="Orte" >Orte anzeigen und bearbeiten</a></td>
+	</tr>
+</table>
 <input type="hidden" name="id" value="<?php echo $id ?>" />
-<p><input type="submit" value="Veranstaltung ändern"></p>
-
-
+<input type="submit" id="submit" value="Veranstaltung ändern" style="width: auto;">
 </form>
 
 <?php

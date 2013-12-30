@@ -8,8 +8,12 @@
 	<link rel="stylesheet" href="./style.css" />
 
 <script type="text/javascript">
-function FensterOeffnen (Adresse) {
-  MeinFenster = window.open(Adresse, "Zweitfenster", "width=300,height=400,left=100,top=200");
+function Fenster_klein (Adresse) {
+  MeinFenster = window.open(Adresse, "Zweitfenster", "width=300,height=200,left=100,top=200");
+  MeinFenster.focus();
+}
+function Fenster_breit (Adresse) {
+  MeinFenster = window.open(Adresse, "Zweitfenster", "width=500,height=400,left=100,top=200");
   MeinFenster.focus();
 }
 </script>
@@ -31,7 +35,7 @@ if (isset($_SESSION["user"]) && isset($_GET["id"])) {
 	} else {echo "<p><b>Es ist ein technisches Problem aufgetreten.</b></p>";}
 } else {
 ?>
-<p>Bitte <a href="./login.php" onclick="FensterOeffnen(this.href); return false"> melde dich</a> an (oder <a href="./registrieren.php" onclick="FensterOeffnen(this.href); return false">registriere dich zum ersten mal</a>)</a></p>
+<p>Bitte <a href="./login.php" onclick="Fenster_klein(this.href, 300); return false"> melde dich</a> an (oder <a href="./registrieren.php" onclick="Fenster_breit(this.href, 600); return false">registriere dich zum ersten mal</a>)</a></p>
 
 <?php
 }

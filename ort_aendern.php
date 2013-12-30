@@ -28,13 +28,30 @@ if (empty($_POST["name"])) {
 ?>
 <h1>Ort ändern</h1>
 <form action="ort_aendern.php" method="POST">
-<p>Name: <input type="text" name="name" maxlength="50" value="<?php echo $name; ?>"/></p>
-<p>PLZ: <input type="text" name="plz" maxlength="5" size="5" value="<?php echo $plz; ?>" /> Stadt: <input type="text" name="stadt" maxlength="50" value="<?php echo $stadt; ?>"/></p>
-<p>Straße: <input type="text" name="strasse" maxlength="50" size="5" value="<?php echo $strasse; ?>" /> Hausnummer: <input type="text" name="hausnummer" maxlength="5" size="3" value="<?php echo $hausnummer; ?>"/></p>
-<input type="hidden" name="id" value="<?php echo $id ?>" />
-<p><input type="submit" value="Ort ändern"></p>
-
-
+<table>
+	<tr>
+		<td>Name:</td>
+		<td><input type="text" name="name" maxlength="50" required value="<?php echo $name; ?>" /></td>
+	</tr>
+	<tr>
+		<td>PLZ:</td>
+		<td><input type="text" name="plz" maxlength="5" size="5" required value="<?php echo $plz; ?>" /></td>
+	</tr>
+	<tr>
+		<td>Stadt:</td>
+		<td><input type="text" name="stadt" maxlength="50" required value="<?php echo $stadt; ?>" /></td>
+	</tr>
+	<tr>
+		<td>Straße:</td>
+		<td><input type="text" name="strasse" maxlength="50" size="5" value="<?php echo $strasse; ?>" /></td>
+	</tr>
+	<tr>
+		<td>Hausnummer:</td>
+		<td><input type="text" name="hausnummer" maxlength="5" size="3" value="<?php echo $hausnummer ?>" /></td>
+	</tr>
+</table>
+<input type="submit" value="Ort hinzufügen" style="width: auto;">
+<input type="hidden" name="id"  />
 </form>
 
 <?php

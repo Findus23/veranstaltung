@@ -4,3 +4,7 @@ tr:nth-child(2n) td {
 a.tabelle:visited {
 	color: blue;
 }
+input, textarea {
+	width: 300px;
+}
+

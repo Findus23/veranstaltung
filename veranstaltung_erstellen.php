@@ -14,10 +14,26 @@
 
 <h1>Veranstaltung erstellen</h1>
 <form action="veranstaltung_erstellen.php" method="POST">
-<p>Name: <input type="text" name="name" maxlength="50"/></p>
-<p>Beschreibung: <textarea name="beschreibung" cols="30" rows="3" ></textarea> </p>
-<p>Tag (dd.mm.yyyy): <input type="date" name="tag" />Uhrzeit (HH:MM): <input type="time" name="zeit" /></p>
-Veranstaltungsort:<select name="ort" size="1">
+<table>
+	<tr>
+		<td>Name: </td>
+		<td><input type="text" name="name" maxlength="50" required autofocus  /></td>
+	</tr>
+	<tr>
+		<td>Beschreibung: </td>
+		<td><textarea name="beschreibung" cols="31" rows="5" ></textarea> </td>
+	</tr>
+	<tr>
+		<td>Tag:</td>
+		<td><input type="date" name="tag" placeholder="dd.mm.yyyy" pattern="(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19|20)\d\d" title="dd.mm.yyyy" /></td>
+	</tr>
+	<tr>
+		<td>Uhrzeit</td>
+		<td><input type="time" name="zeit" placeholder="hh:mm" pattern="^([01][0-9]|2[0-3]):([0-5][0-9])$" title="hh:mm" /></td>
+	</tr>
+	<tr>
+		<td>Veranstaltungsort:</td>
+		<td><select name="ort" size="1">
 <?php
 require_once "verbindungsaufbau.php";
 
@@ -27,10 +43,10 @@ while ($zeile = $ergebnis->fetch_array()) {
     echo "<option value='" . htmlspecialchars($zeile['ort_id']) . "'>" . htmlspecialchars($zeile['ort_name']) . "</option>\n";           //Optionen in Dropdown-Liste eingeben
 }
 ?>
-</select> <a href="./orte.php" target="Orte" >Orte anzeigen und bearbeiten</a>
-<p><input type="submit" value="Veranstaltung hinzufügen"></p>
-
-
+</select><a href="./orte.php" target="Orte" >Orte anzeigen und bearbeiten</a></td>
+	</tr>
+</table>
+<input type="submit" id="submit" value="Veranstaltung hinzufügen" style="width: auto;">
 </form>
 
 <?php

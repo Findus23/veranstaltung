@@ -40,9 +40,17 @@ if (!isset($_SESSION['user'])) {
 
 <body>
 <form action="login.php" method="POST">
-<p>Benutzername: <input type="text" name="benutzername"/></p>
-<p>Passwort: <input type="password" name=passwort /></p>
-<p><input type="submit" value="anmelden" /></p>
+<table>
+	<tr>
+		<td>Benutzername:</td>
+		<td><input type="text" name="benutzername" required autofocus /></td>
+	</tr>
+	<tr>
+		<td>Passwort:</td>
+		<td><input type="password" name=passwort required /></td>
+	</tr>
+</table>
+<input type="submit" value="anmelden" />
 </form>
 
 

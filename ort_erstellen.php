@@ -12,18 +12,33 @@
 
 <h1>Ort hinzufügen</h1>
 <form action="ort_erstellen.php" method="POST">
-<p>Name: <input type="text" name="name" maxlength="50"/></p>
-<p>PLZ: <input type="text" name="plz" maxlength="5" size="5" /> Stadt: <input type="text" name="stadt" maxlength="50"/></p>
-<p>Straße: <input type="text" name="strasse" maxlength="50" size="5" /> Hausnummer: <input type="text" name="hausnummer" maxlength="5" size="3"/></p>
-<p><input type="submit" value="Ort hinzufügen"></p>
-
-
+<table>
+	<tr>
+		<td>Name:</td>
+		<td><input type="text" name="name" maxlength="50" required autofocus /></td>
+	</tr>
+	<tr>
+		<td>PLZ:</td>
+		<td><input type="text" name="plz" maxlength="5" size="5" required /></td>
+	</tr>
+	<tr>
+		<td>Stadt:</td>
+		<td><input type="text" name="stadt" maxlength="50" required /></td>
+	</tr>
+	<tr>
+		<td>Straße:</td>
+		<td><input type="text" name="strasse" maxlength="50" size="5" /></td>
+	</tr>
+	<tr>
+		<td>Hausnummer:</td>
+		<td><input type="text" name="hausnummer" maxlength="5" size="3"/></td>
+	</tr>
+</table>
+<input type="submit" value="Ort hinzufügen" style="width: auto;">
 </form>
-
 <?php
-require_once "verbindungsaufbau.php"; //mit Server verbinden
-
 if (isset($_POST["name"])) {    //Wenn das Formular ausgefüllt wurde ...
+	require_once "verbindungsaufbau.php"; //mit Server verbinden
     $name = $_POST["name"];
     $plz = $_POST["plz"];
     $stadt = $_POST["stadt"];
