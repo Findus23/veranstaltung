@@ -1,5 +1,8 @@
 tr:nth-child(2n) td {
-        background: #EEE8AA;
+        background: #CEF6D8
+}
+tr:nth-child(2n-1) td {
+        background: #FAFA1F
 }
 a.tabelle:visited {
 	color: blue;
@@ -8,3 +11,30 @@ input, textarea {
 	width: 300px;
 }
 
+table {
+	margin: auto;
+	border-collapse: collapse;
+}
+th {
+	font-size: 120%;
+	font-weight: bold;
+}
+a {
+	font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
+	-moz-box-shadow:    2px 2px 5px 2px #ccc;
+    -webkit-box-shadow: 2px 2px 5px 2px #ccc;
+    box-shadow:         2px 2px 5px 2px #ccc;
+}
+html {
+	text-align: center;
+}

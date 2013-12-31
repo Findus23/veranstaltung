@@ -30,12 +30,12 @@ if (isset($_SESSION["user"]) && isset($_GET["id"])) {
         $stmt->execute();                                                               // ... und ausgeführt
         $stmt->close();
         $mysqli->close();
-		echo "<p>Hallo, " . $_SESSION["vorname"] . " " . $_SESSION["nachname"] . "! Du wurdest Erfolgreich in die Veranstaltung eingetragen. <a href='./veranstaltungen.php'>Zurück zur Hauptseite</a>
+		echo "<p>Hallo, " . $_SESSION["vorname"] . " " . $_SESSION["nachname"] . "! Du wurdest erfolgreich in die Veranstaltung eingetragen. <a href='./veranstaltungen.php'>Zurück zur Hauptseite</a>
 <p/>";
 	} else {echo "<p><b>Es ist ein technisches Problem aufgetreten.</b></p>";}
 } else {
 ?>
-<p>Bitte <a href="./login.php" onclick="Fenster_klein(this.href, 300); return false"> melde dich</a> an (oder <a href="./registrieren.php" onclick="Fenster_breit(this.href, 600); return false">registriere dich zum ersten mal</a>)</a></p>
+<p>Bitte <a href="./login.php" onclick="Fenster_klein(this.href, 300); return false"> melde dich</a> an oder <a href="./registrieren.php" onclick="Fenster_breit(this.href, 600); return false">registriere dich zum ersten mal</a></p>
 
 <?php
 }

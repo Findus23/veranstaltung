@@ -35,6 +35,13 @@ if (!isset($_SESSION['user'])) {
 	<meta charset="utf-8" />
 	<title>Login</title>
 	<meta name="author" content="Lukas" >
+	<link rel="stylesheet" href="style.css" />
+	<style type="text/css">
+		input {
+			width: auto;
+		}
+
+	</style>
 
 </head>
 
