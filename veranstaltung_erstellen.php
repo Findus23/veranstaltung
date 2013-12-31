@@ -62,7 +62,7 @@ if (isset($_POST["name"]) && isset($_POST["beschreibung"]) && isset($_POST["tag"
         $stmt->execute();                                                               // ... und ausgeführt
         $stmt->close();
         $mysqli->close();
-        header("Location: http://localhost/mysql/veranstaltung/veranstaltungen.php");   // Auf die Hauptseite weiterleiten
+        header("Location: ".URL."/veranstaltungen.php");   // Auf die Hauptseite weiterleiten
     }
 }
 ?>

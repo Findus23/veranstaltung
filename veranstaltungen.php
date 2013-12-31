@@ -14,7 +14,6 @@
 require_once "verbindungsaufbau.php"; //mit Server verbinden
 
 
-
 $ergebnis = $mysqli->query("SELECT * FROM orte, veranstaltungen WHERE orte.ort_id = veranstaltungen.ort_id");  //SQL Befehl ausführen
 echo "<table border='1'>\n";
 echo "<tr><th>Veranstaltungsname</th><th>Beschreibung</th><th>Zeit</th><th>Ort</th><th>Adresse</th><th>Teinehmen</th><th>Ändern</th><th>Löschen</th>"; //Zeile mit Überschriften

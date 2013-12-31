@@ -15,7 +15,7 @@
 require_once "verbindungsaufbau.php";
 if (empty($_POST["name"])) {
     if (!isset($_GET["id"]) || !is_numeric($_GET["id"])) {     // wenn die id-manipuliert wurde abbrechen
-        header("Location: http://localhost/mysql/veranstaltung/veranstaltungen.php");
+        header("Location: ".URL."/veranstaltungen.php");
 
     }
     $id = $_GET["id"];
@@ -81,7 +81,7 @@ $mysqli->close();
         $stmt->execute();
         $stmt->close();
         $mysqli->close();
-        header("Location: http://localhost/mysql/veranstaltung/veranstaltungen.php");
+        header("Location: ".URL."/veranstaltungen.php");
 
     } else {
       echo "Wir haben ein Problem: " . $mysqli->error;

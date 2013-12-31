@@ -9,7 +9,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
         $stmt->execute();
         $stmt->close();
         $mysqli->close();
-        header("Location: http://localhost/mysql/veranstaltung/orte.php");
+        header(""Location: ".URL."/veranstaltungen.php"");
     } else {
       echo "Fehler";
     }
