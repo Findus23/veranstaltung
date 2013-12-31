@@ -4,9 +4,6 @@ tr:nth-child(2n) td {
 tr:nth-child(2n-1) td {
         background: #FAFA1F
 }
-a.tabelle:visited {
-	color: blue;
-}
 input, textarea {
 	width: 300px;
 }
@@ -19,7 +16,7 @@ th {
 	font-size: 120%;
 	font-weight: bold;
 }
-a {
+a{
 	font: bold 11px Arial;
     text-decoration: none;
     background-color: #EEEEEE;
@@ -37,4 +34,12 @@ a {
 }
 html {
 	text-align: center;
+}
+nav a:visited, nav a:link {
+	box-shadow: none;
+	-moz-box-shadow: none;
+    box-shadow: none;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+
 }
