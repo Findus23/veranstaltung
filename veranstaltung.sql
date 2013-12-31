@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 31. Dez 2013 um 14:55
+-- Erstellungszeit: 31. Dez 2013 um 15:54
 -- Server Version: 5.5.32
 -- PHP-Version: 5.4.19
 
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `orte` (
   `strasse` varchar(50) DEFAULT NULL,
   `hausnummer` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`ort_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Daten für Tabelle `orte`
@@ -73,9 +73,7 @@ CREATE TABLE IF NOT EXISTS `orte` (
 
 INSERT INTO `orte` (`ort_id`, `ort_name`, `stadt`, `plz`, `strasse`, `hausnummer`) VALUES
 (1, 'Bg Rechte Kremszeile', 'Krems an der Donau', '3500', 'Rechte Kremszeile', '54'),
-(2, 'Stratzinger Kellergasse', 'Stratzing', '3500', 'Stratzinger Kellergasse', NULL),
-(3, '5', '3', '4', '2', '1'),
-(5, 'sdf', 'Klosterneuburg', '3500', 'asd', '11');
+(2, 'Stratzinger Kellergasse', 'Stratzing', '3500', 'Stratzinger Kellergasse', NULL);
 
 -- --------------------------------------------------------
 
@@ -118,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `veranstaltungen` (
   `zeit` datetime DEFAULT NULL,
   `ort_id` int(11) NOT NULL,
   PRIMARY KEY (`veranstaltungs_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
 
 --
 -- Daten für Tabelle `veranstaltungen`
