@@ -40,5 +40,10 @@ nav a:visited, nav a:link {
 	-moz-box-shadow: none;
 	-webkit-border-radius: 0px;
 	border-radius: 0px;
+	background: none;
+	border: solid;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 100%;
+
 
 }
