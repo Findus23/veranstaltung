@@ -1,5 +1,5 @@
 ﻿<?php
-require_once "verbindungsaufbau.php";
+require_once "verbindungsaufbau.php"; // wie veranstaltung_loeschen.php
 
 
 if (isset($_GET["id"]) && is_numeric($_GET["id"])) {

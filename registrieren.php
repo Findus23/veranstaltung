@@ -25,7 +25,11 @@ if (isset($_POST["benutzername"])) {    //Wenn das Formular ausgefüllt wurde ..
     $passwort_2 = $_POST["passwort_2"];
 	$email = $_POST["email"];
 
-    if ($stmt = $mysqli->prepare("SELECT COUNT(*) FROM benutzer WHERE username=?")) {
+    if ($passwort_1 != $passwort_2) { // überprüfen ob beide Passwörter übereinstimmen
+        echo "<strong>Das Passwort wurde falsch eingegeben</strong>";
+        exit();
+    }
+    if ($stmt = $mysqli->prepare("SELECT COUNT(*) FROM benutzer WHERE username=?")) { // überprüfen ob der Benutzername schon vergeben wurde.
         $stmt->bind_param("s", $benutzername);
         $stmt->execute();
         $stmt->bind_result($treffer);
@@ -36,20 +40,16 @@ if (isset($_POST["benutzername"])) {    //Wenn das Formular ausgefüllt wurde ..
             exit();
         }
     }
-    if ($passwort_1 != $passwort_2) {
-        echo "<strong>Das Passwort wurde falsch eingegeben</strong>";
-        exit();
-    }
-    $salt = "*|!JeFF28S,@Z3Sm5\1?";
-    $salted_password = $salt . $passwort_1;
-    $password_hash = hash('sha256', $salted_password);
+    $salt = "*|!JeFF28S,@Z3Sm5\1?"; //zufälligen geheimen Wert verwenden ...
+    $salted_password = $salt . $passwort_1; // und diesen an das Passwort anhängen ...
+    $password_hash = hash('sha256', $salted_password); // ... und zuletzt das zusammengehängte Passwort mittels sha256 hashen
     if ($stmt = $mysqli->prepare("INSERT INTO benutzer (username, passwort, vorname, nachname, email) VALUES (?, ?, ?, ?, ?)")) {   // Der SQL-Befehl wird vorbereitet ...
         $stmt->bind_param("sssss", $benutzername, $password_hash, $vorname, $nachname, $email);               // ... eingesetzt ...
         $stmt->execute();                                                               // ... und ausgeführt
         $stmt->close();
         $mysqli->close();
         echo "<p>Benutzer erfolgreich angelegt</p>";
-        echo "<p><input type='button' value='Fenster schließen' onclick='window.opener.parent.location.reload();window.close()'></p>";
+        echo "<p><input type='button' value='Fenster schließen' onclick='window.opener.parent.location.reload();window.close()'></p>"; // Beim Klick auf den Link wird das Fenster geschlossen und das Hauptfenster neu geladen
 
     }
 } else {
@@ -82,11 +82,10 @@ if (isset($_POST["benutzername"])) {    //Wenn das Formular ausgefüllt wurde ..
 		<td><input type="password" id="passwordconf" name="passwort_2" required oninput="check(this)" /></td>
 	</tr>
 <script language='javascript' type='text/javascript'>
-function check(input) {
+function check(input) { //Beim Abschicken wird überprüft ob die Passwörter übereinstimmen -- wenn nicht wird eine Meldung ausgegeben (funktioniert nur bei modernen Browsern) -> sonst per PHP
     if (input.value != document.getElementById('password').value) {
         input.setCustomValidity('Die beiden Passwörter müssen übereinstimmen');
     } else {
-        // input is valid -- reset the error message
         input.setCustomValidity('');
    }
 }

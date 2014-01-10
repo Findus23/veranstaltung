@@ -52,7 +52,7 @@ $ergebnis->close();
 
 <?php
 echo "<table border='1'>\n";
-if (!isset($_GET["u_id"]) && !isset($_GET["v_id"]) || isset($_GET["v_id"]) && !is_numeric($_GET["v_id"]) || isset($_GET["u_id"]) && !is_numeric($_GET["u_id"])) {
+if (!isset($_GET["u_id"]) && !isset($_GET["v_id"]) || isset($_GET["v_id"]) && !is_numeric($_GET["v_id"]) || isset($_GET["u_id"]) && !is_numeric($_GET["u_id"])) { // wenn die Auswahl nicht eingeschränkt wurde
 	$ergebnis = $mysqli->query("SELECT * FROM teilnahmen,benutzer,veranstaltungen WHERE veranstaltungen.veranstaltungs_id = teilnahmen.veranstaltungs_id AND user_id=teilnehmer_id ORDER BY veranstaltungen.veranstaltungs_id ");  //SQL Befehl ausführen
 	echo "<tr><th>Veranstaltung</th><th>Name (Benutzername)</th><th>E-Mail</th></tr>"; //Zeile mit Überschriften
 	while ($zeile = $ergebnis->fetch_array()) {
@@ -61,14 +61,14 @@ if (!isset($_GET["u_id"]) && !isset($_GET["v_id"]) || isset($_GET["v_id"]) && !i
 			. "<td><a href='mailto:" . htmlspecialchars($zeile["email"]) . "'>"  . htmlspecialchars($zeile["email"]) . "</a>" . "</td>"
  	       ."</tr>\n" ;
 	}
-} elseif(isset($_GET["u_id"]) && is_numeric ($_GET["u_id"])) {
+} elseif(isset($_GET["u_id"]) && is_numeric ($_GET["u_id"])) { // wenn der Benutzer eingeschränkt wurde
 	$u_id = $_GET["u_id"];
    	$ergebnis = $mysqli->query("SELECT * FROM teilnahmen,benutzer,veranstaltungen WHERE veranstaltungen.veranstaltungs_id = teilnahmen.veranstaltungs_id AND user_id=teilnehmer_id AND user_id =$u_id ORDER BY veranstaltungen.veranstaltungs_id ");  //SQL Befehl ausführen
 	echo "<tr><th>Veranstaltung</th></tr>"; //Zeile mit Überschriften
 	while ($zeile = $ergebnis->fetch_array()) {
 	  		echo "<tr><td>" . htmlspecialchars($zeile["name"]) . "</td>" . "</tr>\n" ;
 }
-} elseif(isset($_GET["v_id"]) && is_numeric ($_GET["v_id"])) {
+} elseif(isset($_GET["v_id"]) && is_numeric ($_GET["v_id"])) { // wenn die Veranstaltung eingeschränkt wurde
 	$v_id = $_GET["v_id"];
    	$ergebnis = $mysqli->query("SELECT * FROM teilnahmen,benutzer,veranstaltungen WHERE veranstaltungen.veranstaltungs_id = teilnahmen.veranstaltungs_id AND user_id=teilnehmer_id AND veranstaltungen.veranstaltungs_id =$v_id ORDER BY user_id ");  //SQL Befehl ausführen
 	echo "<tr><th>Name (Benutzername)</th><th>E-Mail</th></tr>"; //Zeile mit Überschriften
@@ -77,6 +77,8 @@ if (!isset($_GET["u_id"]) && !isset($_GET["v_id"]) || isset($_GET["v_id"]) && !i
  			. "<td><a href='mailto:" . htmlspecialchars($zeile["email"]) . "'>"  . htmlspecialchars($zeile["email"]) . "</a>" . "</td>"
  	       ."</tr>\n" ;
 }
+} else {
+	echo "<strong>Bitte nur eine Filteroption auswählen<strong>"; // kann theoretisch nicht vorkommen
 }
 
 echo "</table>";

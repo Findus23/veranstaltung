@@ -23,7 +23,7 @@ function Fenster_breit (Adresse) {
 <h1>Teilnahme-Bestätigung</h1>
 <?php
 session_start();
-if (isset($_SESSION["user"]) && isset($_GET["id"])) {
+if (isset($_SESSION["user"]) && isset($_GET["id"]) && is_numeric($_GET["id"])) {
 	require_once "verbindungsaufbau.php"; //mit Server verbinden
     if ($stmt = $mysqli->prepare("INSERT INTO teilnahmen (teilnehmer_id, veranstaltungs_id) VALUES (?, ?)")) {   // Der SQL-Befehl wird vorbereitet ...
         $stmt->bind_param("ii", $_SESSION["user_id"], $_GET["id"]);               // ... eingesetzt ...

@@ -2,21 +2,21 @@ tr:nth-child(2n) td {
         background: #CEF6D8
 }
 tr:nth-child(2n-1) td {
-        background: #FAFA1F
+        background: #FAFA1F /* 2 Farben abwechselnd */
 }
 input, textarea {
-	width: 300px;
+	width: 300px; /* alle Eingabefelder gleich breit machen */
 }
 
 table {
-	margin: auto;
-	border-collapse: collapse;
+	margin: auto; /* alle Tabellen zentrieren */
+	border-collapse: collapse; /* Tabellenzellen direkt aneinander (siehe http://www.css4you.de/border-collapse.html ) */
 }
 th {
-	font-size: 120%;
+	font-size: 120%; /* Tabellenüberschriften größer und fett anzeigen */
 	font-weight: bold;
 }
-a{
+a{ /* Links designen */
 	font: bold 11px Arial;
     text-decoration: none;
     background-color: #EEEEEE;
@@ -33,9 +33,9 @@ a{
     box-shadow:         2px 2px 5px 2px #ccc;
 }
 html {
-	text-align: center;
+	text-align: center; /* alles zentrieren */
 }
-nav a:visited, nav a:link {
+nav a:visited, nav a:link { /* Menü "normal" formatieren */
 	box-shadow: none;
 	-moz-box-shadow: none;
 	-webkit-border-radius: 0px;

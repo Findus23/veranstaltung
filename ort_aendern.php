@@ -11,6 +11,7 @@
 
 <body>
 <?php
+// wie ort_aendern.php
 require_once "verbindungsaufbau.php";
 if (empty($_POST["name"])) {
     if (!isset($_GET["id"]) || !is_numeric($_GET["id"])) {     // wenn die id-manipuliert wurde abbrechen

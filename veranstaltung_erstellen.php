@@ -40,7 +40,7 @@ require_once "verbindungsaufbau.php";
 
 $ergebnis = $mysqli->query("SELECT * FROM orte");    //Ort-Tabelle auslesen
 while ($zeile = $ergebnis->fetch_array()) {
-    echo "<option value='" . htmlspecialchars($zeile['ort_id']) . "'>" . htmlspecialchars($zeile['ort_name']) . "</option>\n";           //Optionen in Dropdown-Liste eingeben
+    echo "<option value='" . htmlspecialchars($zeile['ort_id']) . "'>" . htmlspecialchars($zeile['ort_name']) . "</option>\n";           //Optionen in Dropdown-Liste einfügen
 }
 ?>
 </select><a href="./orte.php" target="Orte" >Orte anzeigen und bearbeiten</a></td>
@@ -52,12 +52,12 @@ while ($zeile = $ergebnis->fetch_array()) {
 <?php
 if (isset($_POST["name"]) && isset($_POST["beschreibung"]) && isset($_POST["tag"]) && isset($_POST["zeit"]) && isset($_POST["ort"])) {    //Wenn das Formular ausgefüllt wurde ...
     $name = $_POST["name"];
-    $beschreibung = $_POST["beschreibung"];
+    $beschreibung = $_POST["beschreibung"];  
     $tag = $_POST["tag"];
     $zeit = $_POST["zeit"];
     $ort = $_POST["ort"];
     $datetime = $tag . " " . $zeit . ":00";         // ... werden Tag und Uhrzeit zusammengefügt
-    if ($stmt = $mysqli->prepare("INSERT INTO veranstaltungen (name, beschreibung, zeit, ort_id) VALUES (?, ?, ?, ?)")) {   // Der SQL-Befehl wirdvorbereitet ...
+    if ($stmt = $mysqli->prepare("INSERT INTO veranstaltungen (name, beschreibung, zeit, ort_id) VALUES (?, ?, ?, ?)")) {   // Der SQL-Befehl wird vorbereitet ...
         $stmt->bind_param("sssi", $name, $beschreibung, $datetime, $ort);               // ... eingesetzt ...
         $stmt->execute();                                                               // ... und ausgeführt
         $stmt->close();

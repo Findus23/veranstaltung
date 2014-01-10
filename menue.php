@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="style.css" />
 <script type="text/javascript">
 function Fenster_klein (Adresse) {
-  MeinFenster = window.open(Adresse, "Zweitfenster", "width=300,height=200,left=100,top=200");
+  MeinFenster = window.open(Adresse, "Zweitfenster", "width=300,height=200,left=100,top=200"); // in einem neuen Fenster öffnen 
   MeinFenster.focus();
 }
 function Fenster_breit (Adresse) {

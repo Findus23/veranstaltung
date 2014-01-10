@@ -1,6 +1,6 @@
 <?php
-session_start();
-session_destroy();
-header("Location: http://localhost/mysql/veranstaltung/veranstaltungen.php");
+session_start(); //Session starten ...
+session_destroy(); // ... um sie danach zu loeschen ...
+header("Location: http://localhost/mysql/veranstaltung/veranstaltungen.php"); // ... und gleich zur Hauptseite weiterleiten
 
 ?>

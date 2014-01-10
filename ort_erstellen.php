@@ -37,6 +37,7 @@
 <input type="submit" value="Ort hinzufügen" style="width: auto;">
 </form>
 <?php
+// wie veranstaltung_erstellen.php
 if (isset($_POST["name"])) {    //Wenn das Formular ausgefüllt wurde ...
 	require_once "verbindungsaufbau.php"; //mit Server verbinden
     $name = $_POST["name"];

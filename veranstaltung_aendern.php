@@ -13,13 +13,13 @@
 <body>
 <?php
 require_once "verbindungsaufbau.php";
-if (empty($_POST["name"])) {
+if (empty($_POST["name"])) { // Formular nur anzeigen, wenn noch nicht abgesendet wurde
     if (!isset($_GET["id"]) || !is_numeric($_GET["id"])) {     // wenn die id-manipuliert wurde abbrechen
         header("Location: ".URL."/veranstaltungen.php");
 
     }
     $id = $_GET["id"];
-    if ($stmt = $mysqli->prepare("SELECT name, beschreibung, zeit, ort_id FROM veranstaltungen WHERE veranstaltungs_id=?")) {
+    if ($stmt = $mysqli->prepare("SELECT name, beschreibung, zeit, ort_id FROM veranstaltungen WHERE veranstaltungs_id=?")) { // Datenbank auslesen um alte Daten einzufügen
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $stmt->bind_result($name, $beschreibung, $datetime, $ort);              //Daten auslesen und in Variablen speichern
@@ -50,10 +50,10 @@ if (empty($_POST["name"])) {
 	<tr>
 		<td>Veranstaltungsort:</td>
 		<td><select name="ort" size="1"><?php
-    $ergebnis = $mysqli->query("SELECT * FROM orte");
+    $ergebnis = $mysqli->query("SELECT * FROM orte"); //Orte aus Datenbank für Dropdownliste
     while ($zeile = $ergebnis->fetch_array()) {
        if ($zeile['ort_id'] == $ort) {
-            echo "<option selected value='" . htmlspecialchars($zeile['ort_id']) . "'>" . htmlspecialchars($zeile['ort_name']) . "</option>\n";
+            echo "<option selected value='" . htmlspecialchars($zeile['ort_id']) . "'>" . htmlspecialchars($zeile['ort_name']) . "</option>\n"; // bei dem Ort der ausgewählt wurde "selected" hinzufügen
         } else {
             echo "<option value='" . htmlspecialchars($zeile['ort_id']) . "'>" . htmlspecialchars($zeile['ort_name']) . "</option>\n";
        }
@@ -68,13 +68,13 @@ $mysqli->close();
 
 <?php
 
-} else {
+} else { // alles abschicken (wie in veranstaltung_erstellen.php
     $name = $_POST["name"];
     $beschreibung = $_POST["beschreibung"];
     $tag = $_POST["tag"];
     $zeit = $_POST["zeit"];
     $ort = $_POST["ort"];
-    $id = $_POST["id"];
+    $id = $_POST["id"]; //zusätzlich noch id mitschicken (da man sie auch nach abschicken benötigt
     $datetime = $tag . " " . $zeit . ":00";
     if ($stmt = $mysqli->prepare("UPDATE veranstaltungen set name=?, beschreibung=?, zeit=?, ort_id=? WHERE veranstaltungs_id=?")) {
         $stmt->bind_param("sssii", $name, $beschreibung, $datetime, $ort, $id);
